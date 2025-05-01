@@ -3,7 +3,9 @@ import { IoClose } from 'react-icons/io5';
 
 Modal.setAppElement('#root');
 
-export function CountryModal({ isOpen, onRequestClose, countryName }) {
+export function CountryModal({ isOpen, onRequestClose, countryName, countryData, isLoading, error }) {
+    const country = countryData?.[0];
+    
     return (
         <Modal
             isOpen={isOpen}
@@ -14,7 +16,21 @@ export function CountryModal({ isOpen, onRequestClose, countryName }) {
             <button className='close-button' onClick={onRequestClose}>
                 <IoClose />
             </button>
-            <h2>{countryName}</h2>
+            {isLoading && <p>Loading data...</p>}
+            {error && <p>Error: {error}</p>}
+            {!error && !isLoading && country && (
+                <div>
+                    <h2>{countryName}</h2>
+                    <img src={country.flags.png} alt={`Flag of ${countryName}`} />
+                    <p><strong>Official Name:</strong>{country.name.official}</p>
+                    <p><strong>Capital:</strong>{country.capital?.[0]}</p>
+                    <p><strong>Continent:</strong>{country.continents?.[0]}</p>
+                    <p><strong>Population:</strong>{country.population.toLocaleString()}</p>
+                    <p><strong>Languages:</strong>{country.languages && Object.values(country.languages).join(', ')}</p>
+                    <p><strong>Currency:</strong>{country.currencies && Object.values(country.currencies).map(cur => cur.name).join(', ')}</p>
+                </div>
+            )}
+
             <p>Details about the country</p>
         </Modal>
     );
