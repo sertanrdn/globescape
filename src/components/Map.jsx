@@ -2,6 +2,8 @@ import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import worldGeoJson from '../data/countries.geo.json';
 import 'leaflet/dist/leaflet.css';
 import '../styles/Map.css';
+import { useState } from 'react';
+import { CountryModal } from './CountryModal';
 
 const countryStyle = {
     fillColor: "transparent", 
@@ -11,12 +13,18 @@ const countryStyle = {
   };
 
 export function Map() {
+    const [selectedCountry, setSelectedCountry] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const onEachCountry = (feature, layer) => {
         layer.setStyle(countryStyle);
         layer.on({
             click: () => {
                 const countryCode = feature.properties.iso_a2;
+                const countryName = feature.properties.name;
                 console.log('Clicked country code:', countryCode);
+                setSelectedCountry(countryName);
+                setIsModalOpen(true);
             }
         });
     }
@@ -41,6 +49,11 @@ export function Map() {
             />
             <GeoJSON data={worldGeoJson} onEachFeature={onEachCountry} />
             </MapContainer>
+            <CountryModal
+                isOpen={isModalOpen}
+                onRequestClose={() => setIsModalOpen(false)}
+                countryName={selectedCountry}
+            />
         </div>
     );
 }
