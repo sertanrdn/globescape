@@ -4,6 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import '../styles/Map.css';
 import { useState } from 'react';
 import { CountryModal } from './CountryModal';
+import { useFetchData } from "../hooks/useFetchData";
 
 const countryStyle = {
     fillColor: "transparent", 
@@ -13,8 +14,11 @@ const countryStyle = {
   };
 
 export function Map() {
-    const [selectedCountry, setSelectedCountry] = useState(null);
+    const [selectedCountryCode, setSelectedCountryCode] = useState(null);
+    const [selectedCountryName, setSelectedCountryName] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const { data, isLoading, error } = useFetchData(selectedCountryCode);
 
     const onEachCountry = (feature, layer) => {
         layer.setStyle(countryStyle);
@@ -23,7 +27,8 @@ export function Map() {
                 const countryCode = feature.properties.iso_a2;
                 const countryName = feature.properties.name;
                 console.log('Clicked country code:', countryCode);
-                setSelectedCountry(countryName);
+                setSelectedCountryCode(countryCode);
+                setSelectedCountryName(countryName);
                 setIsModalOpen(true);
             }
         });
@@ -52,7 +57,10 @@ export function Map() {
             <CountryModal
                 isOpen={isModalOpen}
                 onRequestClose={() => setIsModalOpen(false)}
-                countryName={selectedCountry}
+                countryName={selectedCountryName}
+                countryData={data}
+                isLoading={isLoading}
+                error={error}
             />
         </div>
     );
