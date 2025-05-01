@@ -1,0 +1,11 @@
+.map-wrapper {
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .leaflet-map {
+    width: 100%;
+    height: 75vh;
+}

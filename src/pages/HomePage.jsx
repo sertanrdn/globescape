@@ -1,5 +1,10 @@
-
+import { Map } from "../components/Map"
 
 export function HomePage() {
-    return <h1>Home Page</h1>;
+    return (
+        <main>
+            <h1>Explore the World</h1>
+            <Map />
+        </main>
+    );
 }

@@ -26,9 +26,8 @@ html {
 }
 
 body {
+  display: block;
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
   background-color: var(--color-bg);
@@ -49,4 +48,8 @@ a {
 
 a:hover {
   color: var(--color-highlight);
+}
+
+main {
+  width: 100%;
 }
