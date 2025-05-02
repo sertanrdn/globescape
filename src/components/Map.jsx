@@ -2,6 +2,9 @@ import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import worldGeoJson from '../data/countries.geo.json';
 import 'leaflet/dist/leaflet.css';
 import '../styles/Map.css';
+import { useState } from 'react';
+import { CountryModal } from './CountryModal';
+import { useFetchData } from "../hooks/useFetchData";
 
 const countryStyle = {
     fillColor: "transparent", 
@@ -11,12 +14,22 @@ const countryStyle = {
   };
 
 export function Map() {
+    const [selectedCountryCode, setSelectedCountryCode] = useState(null);
+    const [selectedCountryName, setSelectedCountryName] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const { data, isLoading, error } = useFetchData(selectedCountryCode);
+
     const onEachCountry = (feature, layer) => {
         layer.setStyle(countryStyle);
         layer.on({
             click: () => {
                 const countryCode = feature.properties.iso_a2;
+                const countryName = feature.properties.name;
                 console.log('Clicked country code:', countryCode);
+                setSelectedCountryCode(countryCode);
+                setSelectedCountryName(countryName);
+                setIsModalOpen(true);
             }
         });
     }
@@ -41,6 +54,14 @@ export function Map() {
             />
             <GeoJSON data={worldGeoJson} onEachFeature={onEachCountry} />
             </MapContainer>
+            <CountryModal
+                isOpen={isModalOpen}
+                onRequestClose={() => setIsModalOpen(false)}
+                countryName={selectedCountryName}
+                countryData={data}
+                isLoading={isLoading}
+                error={error}
+            />
         </div>
     );
 }
