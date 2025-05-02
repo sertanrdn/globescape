@@ -32,7 +32,7 @@ export function CountryModal({ isOpen, onRequestClose, countryName, countryData,
                     <p><strong>Languages: </strong>{country.languages && Object.values(country.languages).join(', ')}</p>
                     <p><strong>Currency: </strong>{country.currencies && Object.values(country.currencies).map(cur => cur.name).join(', ')}</p>
 
-                    <div>
+                    <div className='button-container'>
                         <button 
                             onClick={() => addToVisited(countryCode)} 
                             className='visited-button'
