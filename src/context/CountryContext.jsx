@@ -1,14 +1,14 @@
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { CountryContext } from "./CountryContextValue";
 
-const CountryContext = createContext();
 
 export function CountryProvider({ children }) {
     const [visited, setVisited] = useState([]);
     const [wishlist, setWishlist] = useState([]);
 
     useEffect(() => {
-        const storedVisited = JSON.parse(localStorage.getItem('visited') || []);
-        const storedWishlist = JSON.parse(localStorage.getItem('wishlist') || []);
+        const storedVisited = JSON.parse(localStorage.getItem('visited') || '[]');
+        const storedWishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
 
         setVisited(storedVisited);
         setWishlist(storedWishlist);

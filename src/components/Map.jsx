@@ -61,6 +61,7 @@ export function Map() {
                 countryData={data}
                 isLoading={isLoading}
                 error={error}
+                countryCode={selectedCountryCode}
             />
         </div>
     );
