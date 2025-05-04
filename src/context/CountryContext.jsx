@@ -6,21 +6,38 @@ export function CountryProvider({ children }) {
     const [visited, setVisited] = useState([]);
     const [wishlist, setWishlist] = useState([]);
 
+    const [hasLoadedVisited, setHasLoadedVisited] = useState(false);
+    const [hasLoadedWishlist, setHasLoadedWishlist] = useState(false);
+
     useEffect(() => {
+        const storedVisitedRaw = localStorage.getItem('visited');
+        const storedWishlistRaw = localStorage.getItem('wishlist');
+    
+        console.log("🔍 Raw localStorage visited:", storedVisitedRaw);
+        console.log("🔍 Raw localStorage wishlist:", storedWishlistRaw);
+
         const storedVisited = JSON.parse(localStorage.getItem('visited') || '[]');
         const storedWishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
 
         setVisited(storedVisited);
         setWishlist(storedWishlist);
+        setHasLoadedVisited(true);
+        setHasLoadedWishlist(true);
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('visited', JSON.stringify(visited));
-    }, [visited]);
+        if (hasLoadedVisited) {
+            localStorage.setItem('visited', JSON.stringify(visited));
+        }
+        
+    }, [visited, hasLoadedVisited]);
 
     useEffect(() => {
-        localStorage.setItem('wishlist', JSON.stringify(wishlist));
-    }, [wishlist]);
+        if (hasLoadedWishlist) {
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        }
+        
+    }, [wishlist, hasLoadedWishlist]);
 
     const addToVisited = (code) => {
         setVisited((prev) => {

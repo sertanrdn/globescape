@@ -8,7 +8,6 @@ import { CountryProvider } from './context/CountryContext.jsx';
 function App() {
 
   return (
-    <CountryProvider>
       <Router>
         <NavBar />
         <Routes>
@@ -16,8 +15,6 @@ function App() {
           <Route path='/wishlist' element={<Wishlist />} />
         </Routes>
       </Router>
-    </CountryProvider>
-    
   );
 }
 
