@@ -7,7 +7,7 @@ Modal.setAppElement('#root');
 
 export function CountryModal({ isOpen, onRequestClose, countryName, countryData, isLoading, error, countryCode }) {
     const country = countryData?.[0];
-    const { addToVisited, addToWishlist } = useCountryContext();
+    const { visited, wishlist, addToVisited, addToWishlist } = useCountryContext();
     
     return (
         <Modal
@@ -37,13 +37,13 @@ export function CountryModal({ isOpen, onRequestClose, countryName, countryData,
                             onClick={() => addToVisited(countryCode)} 
                             className='visited-button'
                         >
-                            Mark to visited
+                            {visited.includes(countryCode) ? 'Remove from visited' : 'Mark as visited'}
                         </button>
                         <button 
                             onClick={() => addToWishlist(countryCode)} 
                             className='wishlist-button'
                         >
-                            Add to wishlist
+                            {wishlist.includes(countryCode) ? 'Remove from wishlist' : 'Add to wishlist'}
                         </button>
                     </div>
                 </div>

@@ -23,15 +23,33 @@ export function CountryProvider({ children }) {
     }, [wishlist]);
 
     const addToVisited = (code) => {
-        if (!visited.includes(code)) setVisited([...visited, code]);
+        setVisited((prev) => {
+            const isVisited = prev.includes(code);
+            const updated = isVisited 
+                ? prev.filter(c => c !== code) 
+                : [...prev.filter(c => c !== code), code];
 
-        setWishlist(wishlist.filter(c => c !== code)); //remove from the wishlist
+            //remove from the wishlist
+            if (!isVisited) setWishlist((w) => w.filter(c => c !== code));
+
+            return updated;
+        }); 
     }
 
     const addToWishlist = (code) => {
-        if (!wishlist.includes(code)) setWishlist([...wishlist, code]);
-
-        setVisited(visited.filter(c => c !== code)); // remove from visited 
+        setWishlist((prev) => {
+            const isWishlist = prev.includes(code);
+            const updated = isWishlist 
+                ? prev.filter(c => c !== code) 
+                : [...prev.filter(c => c !== code), code];
+    
+            // remove from visited 
+            if (!isWishlist) {
+                setVisited((v) => v.filter(c => c !== code));
+            }
+    
+            return updated;
+        })
     }
 
     return (
