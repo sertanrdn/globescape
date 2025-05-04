@@ -1,12 +1,13 @@
 import { useCountryContext } from "../context/useCountryContext";
 import { useWishlistCountries } from "../hooks/useWishlistCountries";
+import '../styles/Wishlist.css';
 
 export function Wishlist() {
     const { wishlist, addToWishlist } = useCountryContext();
     const { countries, isLoading, error } = useWishlistCountries(wishlist);
 
     console.log('Wishlist: ', wishlist);
-    
+
     return (
         <div>
             <h1>Wishlist</h1>
