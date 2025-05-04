@@ -5,6 +5,7 @@ import '../styles/Map.css';
 import { useState } from 'react';
 import { CountryModal } from './CountryModal';
 import { useFetchData } from "../hooks/useFetchData";
+import { useCountryContext } from "../context/useCountryContext";
 
 const countryStyle = {
     fillColor: "transparent", 
@@ -20,15 +21,25 @@ export function Map() {
 
     const { data, isLoading, error } = useFetchData(selectedCountryCode);
 
+    const { visited, wishlist } = useCountryContext();
+
     const onEachCountry = (feature, layer) => {
-        layer.setStyle(countryStyle);
+        const countryCode = feature.properties.iso_a2;
+
+        let fillColor = 'transparent'; 
+
+        if (visited.includes(countryCode)) {
+            fillColor = '#1C7C54';
+        } else if (wishlist.includes(countryCode)) {
+            fillColor = '#FFCB77';
+        }
+
+        layer.setStyle({...countryStyle, fillColor, fillOpacity: 1});
         layer.on({
             click: () => {
-                const countryCode = feature.properties.iso_a2;
-                const countryName = feature.properties.name;
-                console.log('Clicked country code:', countryCode);
+                // console.log('Clicked country code:', countryCode);
                 setSelectedCountryCode(countryCode);
-                setSelectedCountryName(countryName);
+                setSelectedCountryName(feature.properties.name);
                 setIsModalOpen(true);
             }
         });
@@ -52,7 +63,11 @@ export function Map() {
                 attribution="&copy; OpenStreetMap contributors"
                 noWrap={true}
             />
-            <GeoJSON data={worldGeoJson} onEachFeature={onEachCountry} />
+            <GeoJSON 
+                key={visited.join(',') + wishlist.join(',')}
+                data={worldGeoJson} 
+                onEachFeature={onEachCountry} 
+            />
             </MapContainer>
             <CountryModal
                 isOpen={isModalOpen}
@@ -61,6 +76,7 @@ export function Map() {
                 countryData={data}
                 isLoading={isLoading}
                 error={error}
+                countryCode={selectedCountryCode}
             />
         </div>
     );
