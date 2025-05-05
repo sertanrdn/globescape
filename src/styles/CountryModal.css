@@ -11,6 +11,7 @@
 }
 
 .country-modal {
+    position: relative;
     background: white;
     padding: 2rem;
     border-radius: 10px;
@@ -18,7 +19,6 @@
     max-width: 500px;
     max-height: 90vh;
     overflow-y: auto;
-    position: relative;
 }
 
 .close-button {
@@ -88,3 +88,27 @@ button {
     background-color: #f8b300; 
 }
 
+@media (max-width: 500px) {
+    .country-modal {
+        width: 95%;
+        padding: 1rem;
+        position: relative;
+    }
+
+    .country-modal img {
+        width: 80px;
+    }
+
+    .country-modal-content p {
+        font-size: 0.95rem;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .close-button {
+        position: absolute;
+    }
+}
