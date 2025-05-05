@@ -48,13 +48,13 @@ export function Map() {
     return (
         <div className="map-wrapper">
             <MapContainer 
-                center={[20, 0]}
+                center={[25, 0]}
                 zoom={2}
-                minZoom={2}
+                minZoom={1.4}
                 maxZoom={6}
                 scrollWheelZoom={true}
                 className="leaflet-map"
-                worldCopyJump={false} 
+                worldCopyJump={true} 
                 maxBoundsViscosity={1.0}
                 maxBounds={[[ -90, -180 ], [ 90, 180 ]]} 
             >
