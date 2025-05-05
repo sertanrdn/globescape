@@ -1,0 +1,35 @@
+.wishlist-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.country-card {
+    background-color: #e5e7eb;
+    border-radius: 0.5rem;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.country-card img {
+    width: 100px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+.country-card button {
+    margin-top: 0.5rem;
+    background-color: #ef4444;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.25rem;
+}
+
+.country-card button:hover {
+    background-color: #dc2626;
+}
