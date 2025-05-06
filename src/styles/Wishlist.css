@@ -1,3 +1,14 @@
+.wishlist-page {
+    padding-top: 80px;
+    text-align: center;
+}
+
+.wishlist-page h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #1c7c54;
+}
+
 .wishlist-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

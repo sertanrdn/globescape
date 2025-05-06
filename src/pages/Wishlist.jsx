@@ -9,7 +9,7 @@ export function Wishlist() {
     console.log('Wishlist: ', wishlist);
 
     return (
-        <div>
+        <div className="wishlist-page">
             <h1>Wishlist</h1>
             {isLoading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}

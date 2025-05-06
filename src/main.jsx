@@ -6,8 +6,6 @@ import { CountryProvider } from './context/CountryContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <CountryProvider>
       <App />
-    </CountryProvider>
   </StrictMode>,
 )

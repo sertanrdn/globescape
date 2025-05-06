@@ -44,7 +44,7 @@ export function CountryProvider({ children }) {
             const isVisited = prev.includes(code);
             const updated = isVisited 
                 ? prev.filter(c => c !== code) 
-                : [...prev.filter(c => c !== code), code];
+                : [...prev, code];
 
             //remove from the wishlist
             if (!isVisited) setWishlist((w) => w.filter(c => c !== code));
@@ -58,7 +58,7 @@ export function CountryProvider({ children }) {
             const isWishlist = prev.includes(code);
             const updated = isWishlist 
                 ? prev.filter(c => c !== code) 
-                : [...prev.filter(c => c !== code), code];
+                : [...prev, code];
     
             // remove from visited 
             if (!isWishlist) {

@@ -5,10 +5,14 @@ import { useCountryContext } from '../context/useCountryContext';
 
 Modal.setAppElement('#root');
 
-export function CountryModal({ isOpen, onRequestClose, countryName, countryData, isLoading, error, countryCode }) {
+export function CountryModal({ isOpen, onRequestClose, countryName, countryData, isLoading, error, countryCode, selectedCountryCode }) {
     const country = countryData?.[0];
     const { visited, wishlist, addToVisited, addToWishlist } = useCountryContext();
-    
+
+    if (countryCode === selectedCountryCode) {
+        return null; // Prevent render if it's the same
+    }
+
     return (
         <Modal
             isOpen={isOpen}
