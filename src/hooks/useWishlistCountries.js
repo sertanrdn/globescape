@@ -6,7 +6,7 @@ export function useWishlistCountries(wishlist) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        if (!wishlist || wishlist.length === 0) {
+        if (wishlist.length === 0) {
             setCountries([]);
             return;
         }

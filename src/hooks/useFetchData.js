@@ -15,7 +15,7 @@ export function useFetchData(countryCode) {
             try {
                 const response = await fetch(`https://restcountries.com/v3.1/alpha/${countryCode}`);
 
-                if (!response.ok) throw new Error(`Failed to fetch country details: ${response.body}`);
+                if (!response.ok) throw new Error(`Failed to fetch country details: ${response.statusText}`);
 
                 const result = await response.json();
 

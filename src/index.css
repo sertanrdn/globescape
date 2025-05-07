@@ -12,7 +12,11 @@
   --color-accent: #FFCB77;    
   --color-bg: #F5F5F5;        
   --color-text: #2D2D2D;      
-  --color-highlight: #BFA0D2;
+
+  --font-size-base: 1rem;
+  --padding-base: 1rem;
+  --margin-base: 1rem;
+  --border-radius-base: 0.5rem;
 }
 
 * {
@@ -34,11 +38,11 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-base, system-ui, sans-serif);
-  font-size: 1rem;
+  font-size: var(--font-size-base);
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2rem;
   line-height: 1.1;
 }
 

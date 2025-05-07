@@ -6,8 +6,6 @@ export function Wishlist() {
     const { wishlist, addToWishlist } = useCountryContext();
     const { countries, isLoading, error } = useWishlistCountries(wishlist);
 
-    console.log('Wishlist: ', wishlist);
-
     return (
         <div className="wishlist-page">
             <h1>Wishlist</h1>

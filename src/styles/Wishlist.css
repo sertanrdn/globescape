@@ -5,22 +5,22 @@
 
 .wishlist-page h1 {
     font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #1c7c54;
+    margin-bottom: var(--margin-base);
+    color: var(--color-primary);
 }
 
 .wishlist-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
-    padding: 1rem;
+    padding: var(--padding-base);
 }
 
 .country-card {
     background-color: #e5e7eb;
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius-base);
     text-align: center;
-    padding: 1rem;
+    padding: var(--padding-base);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 1.25rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -36,8 +36,8 @@
 .country-card button {
     margin-top: 0.5rem;
     background-color: #ef4444;
-    color: #fff;
-    padding: 0.5rem 1rem;
+    color: var(--color-bg);
+    padding: 0.5rem var(--padding-base);
     border: none;
     cursor: pointer;
     border-radius: 0.25rem;
