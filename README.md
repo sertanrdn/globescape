@@ -1,12 +1,77 @@
-# React + Vite
+# 🌍 GlobeScape
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+GlobeScape is a multi-page, interactive travel planner app that allows users to explore countries
+across the world using an interactive world map. The app uses the [REST Countries API](https://restcountries.com/)
+to fetch detailed information such as each country's capital, flag, continent, population, and languages.
+Users can mark countries as **visited** or add them to a **wishlist** for future travel plans.
+The app stores this data using localStorage and supports client-side routing for a smooth user
+experience. The UI features a clean, custom-designed interface inspired by light travel themes,
+with responsiveness across laptops, tablets, and mobile devices.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🌐 [globescape.netlify.app](https://globescape.netlify.app)
 
-## Expanding the ESLint configuration
+## 🧭 Branding
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The app is designed as a mock travel platform, taking inspiration from travel apps like VisitedApp
+and Nomad List, to create an easy-to-use and engaging interface for users to plan their international
+adventures
+
+## 🎨 Design&Theme
+
+The UI features a clean, modern design inspired by travel guides' aesthetics.
+It uses a soft, warm color palette to reflect curiosity and global discovery:
+
+- `#1C7C54` (deep teal green)
+- `#FFCB77` (sunset yellow)
+- `#F5F5F5` (light gray)
+- `#2D2D2D` (dark gray)
+
+## 📸 Features
+
+- 🌐 Interactive world map (powered by Leaflet)
+- ✅ Track visited countries
+- 🌟 Wishlist for future destinations
+- 🧠 Modal with country details to expand your knowledge
+- 💾 Persistent local storage
+- 💡 Clean, responsive design 
+
+## 📂 Project Structure
+
+```bash
+src/
+├── components/       # Reusable UI components (Map, NavBar, CountryModal)
+├── context/          # Country context for global state
+├── hooks/            # Custom React hooks (e.g., fetch countries)
+├── pages/            # Page components (Home, Wishlist)
+├── data/             # GeoJSON data (e.g., countries.geo.json)
+├── styles/           # CSS files for each major component
+├── App.jsx
+├── main.jsx
+```
+## 🛠 Tech Stack
+
+- React
+- Vite
+- Leaflet.js
+- CSS Modules
+- REST Countries API
+
+## 📦 Installation
+### Clone the repo
+```git clone https://github.com/sertanrdn/globescape.git```
+
+```cd globescape```
+
+### Install dependencies
+```npm install```
+
+### Start the dev server
+```npm run dev```
+
+## 📁 Data Source
+The app also uses a local countries.geo.json file located in the /data folder to provide geographic boundary data for rendering the map.
+
+## 🤝 Contributing
+Pull requests are welcome! For major changes, please open an issue first.
