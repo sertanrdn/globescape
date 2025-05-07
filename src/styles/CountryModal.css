@@ -12,7 +12,7 @@
 
 .country-modal {
     position: relative;
-    background: white;
+    background: var(--color-bg);
     padding: 2rem;
     border-radius: 10px;
     width: 90%;
@@ -33,7 +33,7 @@
 
 .country-modal img {
     display: block;
-    margin: 1rem auto;
+    margin: var(--margin-base) auto;
     width: 100px;
     border: 1px solid #ccc;
 }
@@ -50,7 +50,7 @@
 .country-modal-content h2 {
     text-align: center;
     font-size: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-base);
 }
 
 .button-container {
@@ -61,7 +61,7 @@
 }
 
 button {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     padding: 10px 20px;
     border-radius: 5px;
     border: none;
@@ -71,7 +71,7 @@ button {
 }
 
 .visited-button {
-    background-color: #1C7C54; 
+    background-color: var(--color-primary); 
     color: white;
 }
 
@@ -80,7 +80,7 @@ button {
 }
 
 .wishlist-button {
-    background-color: #FFCB77; 
+    background-color: var(--color-accent); 
     color: #333;
 }
 
@@ -91,7 +91,7 @@ button {
 @media (max-width: 500px) {
     .country-modal {
         width: 95%;
-        padding: 1rem;
+        padding: var(--padding-base);
         position: relative;
     }
 

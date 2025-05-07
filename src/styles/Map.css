@@ -3,7 +3,7 @@
     overflow: hidden;
     margin: 0;
     padding: 0;
-    margin-bottom: 1rem;
+    margin-bottom: var(--margin-base);
   }
   
   .leaflet-map {
@@ -24,6 +24,6 @@
   }
 
   .map-wrapper {
-    padding-bottom: 1rem;
+    padding-bottom: var(--padding-base);
   }
 }
