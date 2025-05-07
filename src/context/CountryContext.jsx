@@ -10,12 +10,6 @@ export function CountryProvider({ children }) {
     const [hasLoadedWishlist, setHasLoadedWishlist] = useState(false);
 
     useEffect(() => {
-        const storedVisitedRaw = localStorage.getItem('visited');
-        const storedWishlistRaw = localStorage.getItem('wishlist');
-    
-        console.log("🔍 Raw localStorage visited:", storedVisitedRaw);
-        console.log("🔍 Raw localStorage wishlist:", storedWishlistRaw);
-
         const storedVisited = JSON.parse(localStorage.getItem('visited') || '[]');
         const storedWishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
 
